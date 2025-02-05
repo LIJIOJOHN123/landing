@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import HeaderImg from "../assets/Hero/file.png";
+import HeaderImg from "../assets/ValidXPage/1.png";
 import img from "../assets/ValidXPage/img.png";
+import img1 from "../assets/ValidXPage/img1.png";
+import img2 from "../assets/ValidXPage/img2.png";
+import img3 from "../assets/ValidXPage/img3.png";
+import img4 from "../assets/ValidXPage/img4.png";
 
-import ellipse from "../assets/Hero/ellipse.png";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import ellipse1 from "../assets/Hero/ellipse2.png";
 import ellipse3 from "../assets/Hero/ellipse3.png";
-import NavBar from "../components/NavBar";
 import Business from "../components/Business";
-import IntegrationMadeEasy from "../components/IntegrationMadeEasy";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import IntegrationMadeEasy from "../components/IntegrationMadeEasy";
+import NavBar from "../components/NavBar";
 
 function Hero() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const gradientTextStyle = {
     fontWeight: "bold",
     background: "linear-gradient(90deg, white 0%, pink 50%, gold 100%)",
@@ -27,8 +35,9 @@ function Hero() {
   return (
     <div
       id="/"
+      className="pb-sm-3"
       style={{
-        height: "550px",
+        // height: "550px",
         display: "flex",
         background: "linear-gradient(to bottom, #420394, #000000)",
       }}
@@ -39,7 +48,7 @@ function Hero() {
       >
         <NavBar />
         <Row className="mt-4 g-0">
-          <Col>
+          <Col md={5}>
             <h2
               className="position-relative d-inline-block "
               style={gradientTextStyle}
@@ -113,8 +122,11 @@ function Hero() {
               underwriting and Know Your Business (KYB) checks.ompanies, Payment
               Facilitators and Financial Institutions
             </p>
-            <div className="">
+            <div className="z-2  position-relative">
               <button
+                onClick={() => {
+                  navigate("/report");
+                }}
                 style={{
                   marginRight: "20px",
                   background: "linear-gradient(90deg, #8A2BE2, purple, gold)",
@@ -142,23 +154,16 @@ function Hero() {
                 Book A Demo
               </button>
             </div>
-            <p className=" text-white fw-light mt-2">No credit card required</p>
+            <p
+              className=" text-white fw-light mt-2  ms-3 text-white-50"
+              style={{ fontSize: "14px" }}
+            >
+              No credit card required
+            </p>
           </Col>
           <Col className="d-none d-md-block position-relative">
             <img
-              className="position-absolute z-1 img-fluid"
-              style={{
-                marginTop: "165px",
-                objectFit: "cover",
-                maxWidth: "100%",
-                width: "auto",
-                maxHeight: "100%",
-              }}
-              src={ellipse}
-              alt="API illustration"
-            />
-            <img
-              className="img-fluid z-5"
+              className="img-fluid"
               style={{
                 objectFit: "contain",
                 maxWidth: "100%",
@@ -174,16 +179,71 @@ function Hero() {
 }
 
 const data = [
-  "Automated Underwriting for immediate Merchant Approval",
-  "Underwriting Dashboards Highlight key Details for Applications Requiring Additional Review",
-  "Flexible Integration with Any Gateway or Processor and ChargebackZero’s Back Office",
-  "Tailor Onboarding Requirements to Suit Your Specific Business Needs",
+  {
+    title: "Automated Underwriting ",
+    img: img1,
+    des: "Automated underwriting for immediate merchant approval offering rapid approvals and enhanced efficiency with speed, accuracy and customer experience",
+    bgcolor: "#FFEFDA", // Adding bgcolor
+  },
+  {
+    title: "Underwriting Dashboards ",
+    img: img2,
+    des: "Underwriting dashboards highlight key details for applications requiring additional review",
+    bgcolor: "#F5EAFF", // Adding bgcolor
+  },
+  {
+    title: "Flexible Integration ",
+    img: img3,
+    des: "Flexible Integration with any gateway or processor and ChargebackZero’s back office",
+    bgcolor: "#FFF8F1", // Adding bgcolor
+  },
+  {
+    title: "Customization",
+    img: img4,
+    des: "Tailor Onboarding requirements to suit your specific business needs",
+    bgcolor: "#FFEAED", // Adding bgcolor
+  },
+];
+
+const data1 = [
+  {
+    title: "Avoid Fraud Loss",
+    des: "Detecting fraudulent & other problematic merchant activity through merchant URL analysis helps prevent fraud losses.",
+    bgcolor: "#FFEFDA", // 1st item: color changed to #FFEFDA
+  },
+  {
+    title: "Fewer Fines",
+    des: "Failure to detect prohibited or money laundering activities by merchants puts the payment provider at risk of regulatory action, as well as fines by card brands.",
+    bgcolor: "#F1E8FF", // 2nd item: color changed to #F1E8FF
+  },
+  {
+    title: "Reduce Manual Review",
+    des: "We help identify the 10% of cases that actually need further attention. You can redeploy the majority of your human analysts' time and skills elsewhere.",
+    bgcolor: "#FFEAED", // 3rd item: color remains #FFEAED
+  },
+  {
+    title: "Speed Up Time to Activation",
+    des: "Ability to accept more prospective merchants, having the confidence that problematic behaviors will be caught before they cause problems.",
+    bgcolor: "#FFEFDA", // 4th item: color changed to #FFEFDA
+  },
+  {
+    title: "Customer Experience",
+    des: "Help offer a high-quality customer experience while efficiently identifying SMB fraud, leading to increased customer satisfaction and loyalty.",
+    bgcolor: "#F1E8FF", // 5th item: color changed to #F1E8FF
+  },
+
+  {
+    title: "Data-Driven Decision",
+    des: "To help make more informed decisions about whether to terminate or remediate merchants to align with the organization’s risk tolerance.",
+    bgcolor: "#FFEAED", // 7th item: color remains #FFEAED
+  },
 ];
 
 const contentArray = [
   {
     category: "Digital KYC Stack",
-    items: ["Digilocker with", " Analytics", "CKYC", "Aadhaar e-KYC"],
+    items: ["Digilocker with Analytics", "CKYC", "Aadhaar e-KYC", "KRA KYC"],
+    bgcolor: "#FFEFDA", // 1st item
   },
   {
     category: "Video Validation Stack",
@@ -191,57 +251,68 @@ const contentArray = [
       "Video KYC",
       "Video OTP Verification",
       "Self Video KYC",
-      "Pre Issuance Verification",
+      "Pre Issuance Verification Call",
     ],
+    bgcolor: "#F1E8FF", // 2nd item
   },
   {
     category: "Onboarding - Face Validations",
-    items: ["Liveness", "Face Match", "Face Deduplication", "Face"],
+    items: [
+      "Liveness",
+      "Face Match",
+      "Face Deduplication",
+      "Face Authentication",
+    ],
+    bgcolor: "#FFEAED", // 3rd item
   },
   {
     category: "ID Database Checks",
     items: [
-      "Drivers License",
-      "Verification",
+      "Drivers License Verification",
       "Fetch PAN",
       "Passport Verification",
+      "Voter ID verification",
     ],
+    bgcolor: "#FFEFDA", // 4th item
   },
   {
     category: "AML Checks",
     items: [
       "AML Screening",
-      "AML On going Monitoring",
+      "AML On-going Monitoring",
       "Digital Signature",
       "Aadhaar OTP eSign",
     ],
+    bgcolor: "#F1E8FF", // 5th item
   },
   {
     category: "ID Checks & Data Extraction",
     items: [
-      "OCR of Indian IDs - PAN, Voter",
-      " ID",
-      "Aadhaar, Passport",
+      "OCR of Indian IDs - PAN, Voter ID, Aadhaar, Passport",
       "Quality Checks",
+      "Fraud Checks",
     ],
+    bgcolor: "#FFEAED", // 6th item
   },
   {
     category: "KYB / Entity Verification",
     items: [
-      "Udyog Aadhaar",
-      " Verification",
+      "Udyog Aadhaar Verification",
       "GSTN Verification",
-      "Udyam Aadhaar ",
-      "Verification",
+      "Udyam Aadhaar Verification",
+      "KB Documents OCR",
+      "Shop Verification",
     ],
+    bgcolor: "#FFEFDA", // 7th item
   },
   {
     category: "Address & Geo location",
     items: [
       "Geolocation for IP Address",
       "Reverse Geocoding",
-      "Digital Contact Point",
+      "Digital Contact Point Verification",
     ],
+    bgcolor: "#F1E8FF", // 8th item
   },
   {
     category: "Financial Data & BG Validations",
@@ -250,12 +321,14 @@ const contentArray = [
       "EPFO Verification",
       "Salary Slips OCR",
       "Credit Bureau Soft Pull",
-      "Criminal and Court Case",
+      "Criminal and Court Case Verification",
     ],
+    bgcolor: "#FFEAED", // 9th item
   },
   {
     category: "Bank Account Verification",
-    items: ["Reverse Penny", "Drop", "Penny Drop"],
+    items: ["Reverse Penny Drop", "Penny Drop", "Pennyless"],
+    bgcolor: "#FFEFDA", // 10th item (new section)
   },
   {
     category: "Web Presence Review",
@@ -264,9 +337,9 @@ const contentArray = [
       "Industry Classification",
       "Social Media Analysis",
       "Review Page Analysis",
-      "Location Assessment",
-      "Blocklisted",
+      "Blocklisted Companies",
     ],
+    bgcolor: "#F1E8FF", // 11th item (new section)
   },
   {
     category: "Advanced Solutions",
@@ -275,9 +348,10 @@ const contentArray = [
       "AML Check",
       "AML Continuous Monitoring",
       "IP Address Spoofing",
-      "CIBIL Defaulters List check",
-      "Instant Court Record Check & many more",
+      "CIBIL Defaulters List Check",
+      "Instant Court Record Check & Many More",
     ],
+    bgcolor: "#FFEAED", // 12th item (new section)
   },
 ];
 
@@ -292,35 +366,34 @@ const Body = () => {
         src={img}
         alt="Underwriting dashboard"
         style={{ maxWidth: "100%", height: "auto" }}
-        className="img-fluid object-fit-contain"
+        className="img-fluid object-fit-contain "
       />
 
-      <Row className="mt-4 g-4">
-        {data.map((item, index) => (
-          <Col
-            key={index}
-            md={6}
-            className="d-flex align-items-center justify-content-center"
-          >
-            <div
+      <Row>
+        <h3 className="text-center my-4">Key Features</h3>
+        {data.map((item, i) => (
+          <div key={i} className="col-md-6 mb-4 ">
+            <Card
               style={{
-                backgroundColor: "#ede7ff",
-                padding: "20px",
-                borderRadius: "3px",
-                height: "100px",
-                width: "100%",
-                borderColor: "#f2f7ff",
+                backgroundColor: item.bgcolor,
+                borderColor: "whitesmoke",
               }}
-              xs={12}
-              sm={6}
-              className="d-flex align-items-center justify-content-center border border-4 text-center"
+              className="h-100   border border-5 "
             >
-              {item}
-            </div>
-          </Col>
+              <img
+                src={item.img}
+                className="object-fit-contain mt-3 "
+                alt={item.title}
+                style={{ height: "50px", objectFit: "cover" }}
+              />
+              <div className="card-body">
+                <h5 className="card-title text-center">{item.title}</h5>
+                <p className="card-title text-center">{item.des}</p>
+              </div>
+            </Card>
+          </div>
         ))}
       </Row>
-
       <div>
         <h4 className="text-center mt-4">Plug-&-Play APIs:</h4>
         <h5 className="text-center mb-4 fw-normal">
@@ -332,33 +405,68 @@ const Body = () => {
             <Col key={index} md={4} className="mb-4">
               <Card
                 className="h-100"
-                style={{ borderRadius: "15px" }} // Added borderRadius here
+                style={{
+                  borderRadius: "15px",
+                  backgroundColor: section.bgcolor,
+                }} // Added borderRadius here
               >
                 <Card.Title
                   style={{
-                    background: "linear-gradient(gold, #A140FF)",
-                    color: "white",
                     height: "30px",
                     borderTopLeftRadius: "15px", // Match the border radius
                     borderTopRightRadius: "15px", // Match the border radius
                   }}
-                  className="text-center m-0"
+                  className="text-center m-0 border border-white border-2"
                 >
                   {section.category}
                 </Card.Title>
                 <Card.Body
-                  className="text-white"
                   style={{
-                    backgroundColor: "#5345FF",
                     borderBottomLeftRadius: "15px",
                     borderBottomRightRadius: "15px",
                   }}
                 >
-                  <ul className="list-unstyled text-center text-sm-start">
+                  <ul className=" text-center text-sm-start">
                     {section.items.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}
                   </ul>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div>
+        <h4 className="text-center fw-bold mt-4">Benefits </h4>
+
+        <Row>
+          {data1.map((section, index) => (
+            <Col key={index} md={4} className="mb-4">
+              <Card
+                className="h-100 text-center"
+                style={{
+                  borderRadius: "15px",
+                  backgroundColor: section.bgcolor,
+                }} // Added borderRadius here
+              >
+                <Card.Title
+                  style={{
+                    height: "30px",
+                    borderTopLeftRadius: "15px", // Match the border radius
+                    borderTopRightRadius: "15px", // Match the border radius
+                  }}
+                  className="text-center m-0 border border-white border-2"
+                >
+                  {section.title}
+                </Card.Title>
+                <Card.Body
+                  style={{
+                    borderBottomLeftRadius: "15px",
+                    borderBottomRightRadius: "15px",
+                  }}
+                >
+                  <p>{section.des}</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -372,6 +480,58 @@ const Body = () => {
 function ValidXPage() {
   return (
     <div>
+      <Helmet>
+        <title>
+          ValidX | Fast & Automated Merchant Onboarding & Underwriting
+        </title>
+        <meta
+          name="description"
+          content="ValidX offers a streamlined solution for rapid and automated merchant onboarding with KYB (Know Your Business) checks. Ideal for Payment Facilitators, Financial Institutions, and other businesses seeking secure and compliant onboarding solutions."
+        />
+        <meta
+          name="keywords"
+          content="merchant onboarding, automated underwriting, KYB, business verification, financial compliance, payment facilitators, financial institutions, secure onboarding"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="ValidX Team" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Open Graph (OG) meta tags for social sharing */}
+        <meta
+          property="og:title"
+          content="ValidX | Fast & Automated Merchant Onboarding"
+        />
+        <meta
+          property="og:description"
+          content="ValidX simplifies merchant onboarding with fast, automated underwriting and KYB checks. Designed for Payment Facilitators and Financial Institutions to ensure seamless, secure processes."
+        />
+        <meta property="og:image" content={HeaderImg} />
+        <meta
+          property="og:url"
+          content="https://master.d359u0ilif4b78.amplifyapp.com/solution/validX"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="ValidX" />
+
+        {/* Twitter meta tags for better engagement */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="ValidX | Automated Merchant Onboarding & KYB"
+        />
+        <meta
+          name="twitter:description"
+          content="ValidX provides an automated and compliant solution for merchant onboarding with fast KYB checks. Tailored for financial institutions and businesses to simplify processes."
+        />
+        <meta name="twitter:image" content={HeaderImg} />
+
+        {/* Canonical URL to avoid duplicate content */}
+        <link
+          rel="canonical"
+          href="https://master.d359u0ilif4b78.amplifyapp.com/solution/validX"
+        />
+      </Helmet>
+
       <Hero />
       <Body />
       <Business />

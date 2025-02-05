@@ -14,7 +14,7 @@ function Websites() {
       backgroundColor: "#fefbf2",
       Name: "ValidX",
       Title: "ValidX – Underwriting & Onboarding",
-      Subtitle: "Increase Onboarding Speed",
+
       Description:
         "Automate Your Onboarding, Eliminate Risk, Stay Compliant and Secure. Revenue Soar: Make the onboarding process for your merchants quick and easy with our solutions, similar to the Stripe experience.",
       Features: [
@@ -78,7 +78,7 @@ function Websites() {
         {data.map((item, index) => (
           <div
             className="mt-3 "
-            style={{ backgroundColor: item.backgroundColor,}}
+            style={{ backgroundColor: item.backgroundColor }}
           >
             <div
               className={`d-sm-flex  d-block  justify-content-between  container mb-4 ${
@@ -94,7 +94,7 @@ function Websites() {
                 />
               </div>
               <div className=" w-100 w-sm-50 p-3">
-                <h5 className="card-title">{item.Title}</h5>
+                <h5 className="card-title mb-2">{item.Title}</h5>
                 {item.Subtitle && (
                   <h6 className="card-subtitle mb-2 text-muted">
                     {item.Subtitle}
@@ -114,6 +114,9 @@ function Websites() {
                   {item.Buttons && (
                     <div className="mt-3 d-flex justify-content-center">
                       <button
+                        onClick={() => {
+                          navigate("/book-a-demo");
+                        }}
                         style={{
                           marginRight: "20px",
                           background:
@@ -122,15 +125,20 @@ function Websites() {
                           transition:
                             "background-color 0.3s ease-in-out, transform 0.2s ease",
                           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                          width: "200px",maxHeight:"70px"
+                          width: "200px",
+                          maxHeight: "70px",
                         }}
                         className="border-white btn btn-dark btn-lg rounded mb-3 mb-sm-0"
                       >
                         {item.Buttons.BookADemo}
                       </button>
                       <button
-                      onClick={() => navigate(item.link)}
-                        style={{ width: "200px", backgroundColor: "#5c3792" , maxHeight:"70px"}}
+                        onClick={() => navigate(item.link)}
+                        style={{
+                          width: "200px",
+                          backgroundColor: "#5c3792",
+                          maxHeight: "70px",
+                        }}
                         className="btn text-white"
                       >
                         {item.Buttons.LearnMore}

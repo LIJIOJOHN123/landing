@@ -26,7 +26,7 @@ const data = [
   {
     img: img2,
     category: "Merchant monitoring",
-    powered_by: "MonitirX",
+    powered_by: "MonitorX",
     features: [
       "Changing Content and Website Information",
       "MCC Change Detection",
@@ -51,7 +51,7 @@ const data = [
 // React component to render the content
 const FeatureList = () => {
   // State to manage the visibility of each feature list
-  const [visible, setVisible] = useState(1);
+  const [visible, setVisible] = useState(null);
 
   // Toggle function to show/hide the feature list
   const toggleVisibility = (index) => {
@@ -60,52 +60,54 @@ const FeatureList = () => {
 
   return (
     <div className="bg-body-tertiary">
-
-    <div className="container pt-4 ">
-      <div className="row">
-        {data.map((item, index) => (
-          <div className="col-md-4 mb-4" key={index}>
-            <div className="card ">
-              <div className="card-body">
-                <div className="d-flex justify-content-between align-items-center">
-                  <img
-                    src={item.img}
-                    className="img-fluid"
-                    style={{ width: "30px", objectFit: "contain" }}
-                    alt="icon"
-                  />
-                  <div>
-                    <h5 className="card-title">{item.category}</h5>
-                    <p className="mb-2 text-muted">
-                      Powered by {item.powered_by}
-                    </p>
-                  </div>
-                  <div className="form-check form-switch">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id={`flexSwitchCheck${index}`}
-                      checked={visible === index}
-                      onChange={() => toggleVisibility(index)}
+      <div className="container pt-4 ">
+        <div className="row">
+          {data.map((item, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div
+                className="card "
+                style={{ cursor: "pointer" }}
+                onClick={() => toggleVisibility(index)}
+              >
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <img
+                      src={item.img}
+                      className="img-fluid"
+                      style={{ width: "30px", objectFit: "contain" }}
+                      alt="icon"
                     />
+                    <div>
+                      <h5 className="card-title">{item.category}</h5>
+                      <p className="mb-2 text-muted">
+                        Powered by {item.powered_by}
+                      </p>
+                    </div>
+                    <div className="form-check form-switch">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id={`flexSwitchCheck${index}`}
+                        checked={visible === index}
+                      />
+                    </div>
                   </div>
+                  {visible === index && (
+                    <ul className="list-group list-group-flush mt-3">
+                      {item.features.map((feature, idx) => (
+                        <li className="list-group-item" key={idx}>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                {visible === index && (
-                  <ul className="list-group list-group-flush mt-3">
-                    {item.features.map((feature, idx) => (
-                      <li className="list-group-item" key={idx}>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

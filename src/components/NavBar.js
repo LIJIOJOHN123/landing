@@ -12,7 +12,7 @@ function NavBar() {
   const link = [
     { text: "SOLUTION", link: "/" },
 
-    { text: "WHY US", link: "/why-us" },
+    // { text: "WHY US", link: "/why-us" },
 
     { text: "ABOUT US", link: "/about-us" },
 
@@ -36,6 +36,11 @@ function NavBar() {
       title: "DisputeX - Chargeback Management",
 
       href: "/solution/disputeX",
+    },
+    {
+      title: "Case Management",
+
+      href: "/solution/case-management",
     },
 
     {
@@ -73,7 +78,7 @@ function NavBar() {
 
           <Navbar.Collapse id="navbarSupportedContent">
             <Nav
-              className="ml-auto w-100 d-flex justify-content-end"
+              className="ml-auto w-100 d-flex justify-content-end align-items-center"
               style={{ gap: "20px" }}
             >
               {link.map((item, index) =>
@@ -82,13 +87,14 @@ function NavBar() {
                     key={index}
                     title={<span style={{ color: "white" }}>{item.text}</span>}
                     id="navbarDropdown"
+                    className="custom-dropdown"
                   >
                     {UseCases.map((useCase) =>
                       useCase.title === "Industry Classifier" ? (
                         <NavDropdown.Item
                           key={useCase.title}
-                          as="a" 
-                          href="https://webclazify.netlify.app/"
+                          as="a"
+                          href="https://www.validx.chargebackzero.com/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -115,7 +121,22 @@ function NavBar() {
                   </Nav.Link>
                 )
               )}
+              <Link to="/auth/login">
+                <Button className="bg-transparent border-white">
+                  SIGN IN
+                </Button>
+              </Link>
+              <Link to={"/report"}>
+
+                <Button
+                  style={{ backgroundColor: "#F0E68C" }}
+                  className="text-black  border-0 "
+                >
+                  GET STARTED
+                </Button>
+              </Link>
             </Nav>
+
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -8,6 +8,8 @@ import phonePe from "../assets/CompanyName/phonePe.png";
 import signzy from "../assets/CompanyName/signzy.png";
 import simpl from "../assets/CompanyName/simpl.png";
 import wibmo from "../assets/CompanyName/wibmo.png";
+import icici from "../assets/CompanyName/icici.png";
+import nural from "../assets/CompanyName/nural.png";
 import pineLabs from "../assets/CompanyName/pineLabs.png";
 import { Container } from 'react-bootstrap';
 
@@ -21,7 +23,9 @@ const companyImages = [
   { src: signzy, alt: 'Signzy' },
   { src: simpl, alt: 'Simpl' },
   { src: wibmo, alt: 'Wibmo' },
-  { src: pineLabs, alt: 'PineLabs' }
+  { src: pineLabs, alt: 'PineLabs' },
+  { src: icici, alt: 'icic' },
+  { src: nural, alt: 'nural' }
 ];
 
 function CompanyName() {

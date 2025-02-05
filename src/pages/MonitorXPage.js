@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import HeaderImg from "../assets/MonitorXPage/headerImg.png";
 
@@ -21,9 +21,13 @@ import Business from "../components/Business";
 import IntegrationMadeEasy from "../components/IntegrationMadeEasy";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function Hero() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const gradientTextStyle = {
     fontWeight: "bold",
     background: "linear-gradient(90deg, white 0%, pink 50%, gold 100%)",
@@ -36,9 +40,10 @@ function Hero() {
 
   return (
     <div
+      className="pb-sm-3"
       id="/"
       style={{
-        height: "550px",
+        // height: "550px",
         display: "flex",
         background: "linear-gradient(to bottom, #420394, #000000)",
       }}
@@ -48,7 +53,7 @@ function Hero() {
         style={{ width: "90%", maxWidth: "1200px" }}
       >
         <NavBar />
-        <Row className="mt-4 g-0">
+        <Row className="mt-4 g-0 d-flex align-items-center">
           <Col>
             <h2
               className="position-relative d-inline-block "
@@ -122,8 +127,11 @@ function Hero() {
               Monitor acts like 24/7 CCTV monitoring your entire merchant
               portfolio for non-compliant and brand-damaging content
             </p>
-            <div className="">
+            <div className="z-2  position-relative">
               <button
+                onClick={() => {
+                  navigate("/report");
+                }}
                 style={{
                   marginRight: "20px",
                   background: "linear-gradient(90deg, #8A2BE2, purple, gold)",
@@ -151,28 +159,19 @@ function Hero() {
                 Book A Demo
               </button>
             </div>
-            <p className=" text-white fw-light mt-2 mx-3">
+            <p
+              className=" text-white fw-light mt-2  ms-3 text-white-50"
+              style={{ fontSize: "14px" }}
+            >
               No credit card required
             </p>
           </Col>
-          <Col className="d-none d-md-block position-relative">
+          <Col className="d-none d-md-flex justify-content-center ">
             <img
-              className="position-absolute z-1 img-fluid"
-              style={{
-                marginTop: "165px",
-                objectFit: "cover",
-                maxWidth: "100%",
-                width: "auto",
-                maxHeight: "100%",
-              }}
-              src={ellipse}
-              alt="API illustration"
-            />
-            <img
-              className="img-fluid z-5"
+              className="img-fluid "
               style={{
                 objectFit: "contain",
-                maxWidth: "100%",
+                maxWidth: "70%",
               }}
               src={HeaderImg}
               alt="API illustration"
@@ -189,7 +188,7 @@ const contentArray = [
     title: "Monitor",
     description:
       "Closely Monitor Merchants for Card Schemes, Acquirers, and PSPs: Track Products, Services, and Content Classification on Merchant Websites.",
-    bgcolor: "#FFF0DA", // light beige background
+    bgcolor: "#FDFAF3", // light beige background
     img: img1,
   },
   {
@@ -204,7 +203,7 @@ const contentArray = [
     img: img3,
     description:
       "Reveal hidden connections between your merchants and networks selling violating content to ensure portfolio compliance and avoid costly fines.",
-    bgcolor: "#F6EBFF", // light pink background
+    bgcolor: "#FFEEFD", // light pink background
   },
   {
     title: "Risk Policy Configuration",
@@ -225,7 +224,7 @@ const contentArray = [
     img: img6,
     description:
       "Every Violation Identified by CBZero Technology is validated by tenured risk experts, ensuring your team focuses on genuine issues, not false positives.",
-    bgcolor: "#FFEBEE", // light pink background
+    bgcolor: "#FFEEFD", // light pink background
   },
 ];
 const BenifitsArray = [
@@ -234,26 +233,31 @@ const BenifitsArray = [
     description:
       "Ensure merchants follow card network and government regulations",
     img: img7,
+    bgcolor: "#FFEFDA",
   },
   {
     title: "Custom Reporting",
     img: img8,
     description:
       "Receive tailored alerts and stay updated on relevant terms of services and regional violations",
+    bgcolor: "#F1E8FF", // Adding bgcolor
   },
   {
     title: "Operational Efficiency",
     img: img9,
     description:
-      "Streamine internal process to allow risk teams to focus on strategic decision",
+      "Streamline internal processes to allow risk teams to focus on strategic decisions",
+    bgcolor: "#FFEBED", // Adding bgcolor
   },
   {
     title: "Data Driven Decision",
     img: img10,
     description:
       "Monitor high risk categories balancing risk assessment with growth opportunities",
+    bgcolor: "#FFEEFD", // Adding bgcolor
   },
 ];
+
 
 const Body = () => {
   return (
@@ -296,10 +300,13 @@ const Body = () => {
           <Row>
             {BenifitsArray.map((item, i) => (
               <div key={i} className="col-md-6 mb-4 ">
-                <Card style={{ backgroundColor: "#5345FF", borderColor:"#F2F7FF" }}  className="h-100   border border-5 text-white">
+                <Card
+                  style={{ backgroundColor: item.bgcolor,}}
+                  className="h-100   border border-3 border-white  "
+                >
                   <img
                     src={item.img}
-                    className="object-fit-contain mt-3"
+                    className="object-fit-contain mt-3 "
                     alt={item.title}
                     style={{ height: "50px", objectFit: "cover" }}
                   />
@@ -320,6 +327,49 @@ const Body = () => {
 function MonitorXPage() {
   return (
     <div>
+      <Helmet>
+        <title>
+          MonitorX - Advanced Merchant Monitoring and Risk Management
+        </title>
+        <meta
+          name="description"
+          content="MonitorX provides advanced merchant monitoring solutions, analytics, and risk management tools to ensure regulatory compliance and operational efficiency. Detect alterations in merchant profiles, track product compliance, and manage transactional risk."
+        />
+        <meta
+          name="keywords"
+          content="merchant monitoring, risk management, regulatory compliance, portfolio analytics, transaction laundering detection, compliance tools, risk assessment"
+        />
+        <meta name="author" content="MonitorX Team" />
+        <meta
+          property="og:title"
+          content="MonitorX - Advanced Merchant Monitoring and Risk Management"
+        />
+        <meta
+          property="og:description"
+          content="MonitorX offers comprehensive solutions for monitoring merchant websites, analyzing portfolio performance, and managing risks to ensure compliance with regulatory standards."
+        />
+        <meta property="og:image" content={HeaderImg} />
+        <meta
+          property="og:url"
+          content="https://master.d359u0ilif4b78.amplifyapp.com/solution/monitorX"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content={HeaderImg} />
+        <meta
+          name="twitter:title"
+          content="MonitorX - Advanced Merchant Monitoring and Risk Management"
+        />
+        <meta
+          name="twitter:description"
+          content="MonitorX provides solutions for merchant monitoring, risk management, and compliance with an emphasis on advanced analytics and portfolio management."
+        />
+        <meta name="twitter:image" content={HeaderImg} />
+        <link
+          rel="canonical"
+          href="https://master.d359u0ilif4b78.amplifyapp.com/solution/monitorX"
+        />
+      </Helmet>
+
       <Hero />
       <Body />
       <Business />

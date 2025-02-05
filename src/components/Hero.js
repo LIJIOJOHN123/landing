@@ -8,7 +8,7 @@ import ellipse3 from "../assets/Hero/ellipse3.png";
 import { useNavigate } from "react-router-dom";
 
 function Hero() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const gradientTextStyle = {
     fontWeight: "bold",
@@ -23,34 +23,54 @@ function Hero() {
   return (
     <div
       id="/"
+      className="h-100 pb-sm-5 "
       style={{
-        height: "550px",
+        // height: "550px",
         display: "flex",
-        background: "linear-gradient(to bottom, #420394, #000000)" }}
-      
+        background: "linear-gradient(to bottom, #420394, #000000)",
+      }}
     >
       <div
-        className="container mt-5"
+        className="container mt-5 overflow-hidden "
         style={{ width: "90%", maxWidth: "1200px" }}
       >
         <NavBar />
-        <Row className="mt-4 g-0">
+        <Row className="mt-4 g-0 ">
           <Col>
-            <h2 className="text-white">
-              Ultimate All-in-One
-              <span style={{ color: "#FFE55C" }}> Platform for </span>
-            </h2>
-            <h2
-              className="position-relative d-inline-block"
-              style={gradientTextStyle}
-            >
-              Merchant Underwriting
+            <div className="position-relative d-inline-block">
+              <h3 className="text-white">
+                Ultimate All-in-One
+                <span style={{ color: "#FFE55C" }}> Platform for </span>
+              </h3>
+              <h4 style={gradientTextStyle}>Merchant Underwriting,</h4>
+              <span className="text-white h4"> Monitoring</span>
+              <h3 className="text-white ">and Chargeback Management!</h3>
+              <div style={{ position: "relative" }}>
+                <img
+                  className="position-absolute"
+                  style={{ objectFit: "contain", width: "100px" }}
+                  src={ellipse1}
+                  alt="API illustration"
+                />
+              </div>
+              <img
+                className="position-absolute d-none d-lg-block  "
+                style={{
+                  marginTop: "-130px",
+                  objectFit: "contain",
+                  width: "90px",
+                  left: "360px",
+                }}
+                src={ellipse3}
+                alt="API illustration"
+              />
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 10"
                 style={{
                   position: "absolute",
-                  bottom: "-25px",
+                  bottom: "-35px",
                   left: "0",
                   width: "100%",
                   height: "auto",
@@ -86,34 +106,16 @@ function Hero() {
                   strokeLinecap="round"
                 />
               </svg>
-            </h2>
-
-            <div style={{ position: "relative" }}>
-              <img
-                className="position-absolute"
-                style={{ objectFit: "contain", width: "100px" }}
-                src={ellipse1}
-                alt="API illustration"
-              />
             </div>
-            <img
-              className="position-absolute d-none d-lg-block"
-              style={{
-                marginTop: "-130px",
-                objectFit: "contain",
-                width: "90px",
-                left: "360px",
-              }}
-              src={ellipse3}
-              alt="API illustration"
-            />
-
-            <p className="mt-5 text-white">
+            <p className=" mt-5 text-white">
               For Software Platforms, Payment Companies, Payment Facilitators
               and Financial Institutions
             </p>
-            <div className="">
+            <div className="z-2  position-relative">
               <button
+                onClick={() => {
+                  navigate("/report");
+                }}
                 style={{
                   marginRight: "20px",
                   background: "linear-gradient(90deg, #8A2BE2, purple, gold)",
@@ -141,26 +143,32 @@ function Hero() {
                 Book A Demo
               </button>
             </div>
-            <p className=" text-white fw-light mt-2">No credit card required</p>
+            <p
+              className=" text-white fw-light mt-2  ms-3 text-white-50"
+              style={{ fontSize: "14px" }}
+            >
+              No credit card required
+            </p>
           </Col>
-          <Col className="d-none d-md-block position-relative">
+          <Col md={7} className="d-none d-md-block position-relative">
             <img
-              className="position-absolute z-1 img-fluid"
+              className="position-absolute  img-fluid"
               style={{
                 marginTop: "165px",
                 objectFit: "cover",
-                maxWidth: "100%",
+                maxWidth: "80%",
                 width: "auto",
                 maxHeight: "100%",
+                zIndex: 1, // Ensures this image is behind the other
               }}
               src={ellipse}
-              alt="API illustration"
+              alt="API illustration1"
             />
             <img
-              className="img-fluid z-5"
+              className="img-fluid position-relative"
               style={{
-                objectFit: "contain",
-                maxWidth: "100%",
+                marginTop: "30px",
+                zIndex: 2,
               }}
               src={HeaderImg}
               alt="API illustration"
