@@ -1,21 +1,24 @@
-
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ValidXPage from './pages/ValidXPage';
-import MonitorXPage from './pages/MonitorXPage';
-import DisputeXPage from './pages/DisputeXPage';
-import CalendlyDemo from './components/CalendlyDemo';
+
+// Lazy load the components
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const ValidXPage = React.lazy(() => import('./pages/ValidXPage'));
+const MonitorXPage = React.lazy(() => import('./pages/MonitorXPage'));
+const DisputeXPage = React.lazy(() => import('./pages/DisputeXPage'));
+const CalendlyDemo = React.lazy(() => import('./components/CalendlyDemo'));
 
 function App() {
   return (
-    <Routes>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/solution/validX" element={<ValidXPage />} />
-    <Route path="/solution/monitorX" element={<MonitorXPage />} />
-    <Route path="/solution/disputeX" element={<DisputeXPage />} />
-    <Route path="/book-a-demo" element={<CalendlyDemo />} />
-  </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/solution/validX" element={<ValidXPage />} />
+        <Route path="/solution/monitorX" element={<MonitorXPage />} />
+        <Route path="/solution/disputeX" element={<DisputeXPage />} />
+        <Route path="/book-a-demo" element={<CalendlyDemo />} />
+      </Routes>
+    </Suspense>
   );
 }
 

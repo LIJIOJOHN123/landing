@@ -1,0 +1,8 @@
+services:
+  # Production service using the external Docker image
+  react-app-prod:
+    image: lijojohnrbs/chargebackonline
+    ports:
+      - "6000:80"
+    environment:
+      - NODE_ENV=production
