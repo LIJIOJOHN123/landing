@@ -35,7 +35,6 @@ const Report = () => {
     }));
   };
 
-  console.log(process.env.REACT_APP_TEMPLATE_ID, "ServiceId");
 
 
   const handleSubmit = (e) => {
@@ -68,6 +67,20 @@ const Report = () => {
     setLoading(false)
   };
 
+   useEffect(() => {
+      window.scrollTo(0, 0);
+  
+      // Load HubSpot Form Script dynamically
+      const script = document.createElement("script");
+      script.src = "https://js-na2.hsforms.net/forms/embed/242177532.js";
+      script.defer = true;
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, []);
+
   return (
     <>
       <div
@@ -87,7 +100,16 @@ const Report = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-center align-items-center my-5 ">
+
+      <div
+        className="hs-form-frame"
+        data-region="na2"
+        data-form-id="d20c3852-1415-457b-aba9-10940bb2008f"
+        data-portal-id="242177532"
+      ></div>
+
+
+      {/* <div className="d-flex justify-content-center align-items-center my-5 ">
         <Container
           className="border border-danger rounded-5 p-4 "
           style={{
@@ -170,7 +192,7 @@ const Report = () => {
             )}
           </div>
         </Container>
-      </div>
+      </div> */}
       <Footer />
     </>
   );
