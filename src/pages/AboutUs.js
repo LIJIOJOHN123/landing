@@ -5,8 +5,6 @@ import img1 from "../assets/WhyusPage/img1.png";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 const AboutUs = () => {
-
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,7 +37,7 @@ const AboutUs = () => {
               className="position-relative d-inline-block "
               style={gradientTextStyle}
             >
-              RISK AND COMPLIANCE SOLUTIONS FOR FINANCILAL INSTITUTIONS AND
+              RISK AND COMPLIANCE SOLUTIONS FOR FINANCIAL INSTITUTIONS AND
               ONLINE PLATFORMS
               <svg
                 xmlns="http://www.w3.org/2000/svg"
