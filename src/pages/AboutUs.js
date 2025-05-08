@@ -17,6 +17,7 @@ const AboutUs = () => {
     MozTextFillColor: "transparent",
     display: "inline-block",
   };
+
   return (
     <>
       <div
@@ -96,7 +97,7 @@ const AboutUs = () => {
           compliance, and anti-fraud systems, honed over decades at top-tier
           organizations including Amazon, HSBC, PhonePe, Razorpay, and Noon.
         </p>
-        // <img src={img1} className="img-fluid" />
+        
       </Container>
       <Footer />
     </>
